@@ -3,70 +3,142 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>c2bdemo — Home Equity Line</title>
-<link rel="stylesheet" href="style.css">
-<!-- MCP BEACON: Replace YOUR_ACCOUNT and YOUR_DATASET below -->
-<script type="text/javascript" src="//cdn.evgnet.com/beacon/nkroehlmerkle/c2bdemo/scripts/evergage.min.js"></script></head>
+<title>Home Equity Line of Credit — CircleTwoBank</title>
+<!-- PASTE YOUR BEACON SCRIPT BELOW -->
+<!-- <script type="text/javascript" src="//cdn.evgnet.com/beacon/YOUR_ACCOUNT/YOUR_DATASET/scripts/evergage.min.js"></script> -->
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0a1628;--navy-l:#132240;--gold:#c9a84c;--gold-l:#e4c76b;--white:#f4f1ec;--gray:#8a9bb5;--green:#34c77b;--card:#111e36;--accent:#c9a84c;--radius:14px}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--navy);color:var(--white);min-height:100vh}
+a{text-decoration:none;color:inherit}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:1px solid rgba(255,255,255,.06)}
+.logo{font-size:20px;font-weight:700;letter-spacing:-.5px}.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:28px;font-size:14px;color:var(--gray)}.nav-links a:hover{color:var(--white)}.nav-links a.active{color:var(--white)}
+.nav-user{display:flex;align-items:center;gap:10px;font-size:14px}
+.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#e8a020);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:var(--navy)}
+
+.product-hero{max-width:900px;margin:0 auto;padding:60px 40px 40px}
+.breadcrumb{font-size:13px;color:var(--gray);margin-bottom:20px}.breadcrumb a:hover{color:var(--white)}
+.badge{display:inline-block;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:16px}
+.badge-gold{background:rgba(201,168,76,.15);color:var(--gold)}
+h1{font-size:38px;font-weight:700;line-height:1.2;margin-bottom:10px}
+.tagline{font-size:17px;color:var(--gray);line-height:1.5;max-width:600px}
+
+.rate-card{max-width:900px;margin:0 auto;padding:0 40px}
+.rate-box{background:var(--card);border:1px solid rgba(201,168,76,.2);border-radius:var(--radius);padding:32px;display:flex;align-items:center;gap:40px;flex-wrap:wrap}
+.rate-main{text-align:center;min-width:160px}
+.rate-num{font-size:52px;font-weight:800;color:var(--accent)}
+.rate-label{font-size:13px;color:var(--gray);margin-top:4px}
+.rate-details{flex:1;min-width:250px}
+.rate-details h3{font-size:16px;font-weight:600;margin-bottom:12px}
+.detail-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:14px}
+.detail-row span:first-child{color:var(--gray)}
+.detail-row span:last-child{font-weight:600}
+.rate-actions{display:flex;flex-direction:column;gap:10px;min-width:180px}
+.btn{display:inline-block;padding:13px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all .2s;text-align:center}
+.btn-accent{background:var(--accent);color:var(--navy)}.btn-accent:hover{background:var(--gold-l);transform:translateY(-1px)}
+.btn-outline{background:transparent;border:1.5px solid rgba(255,255,255,.15);color:var(--white)}.btn-outline:hover{border-color:rgba(255,255,255,.35)}
+
+.features{max-width:900px;margin:0 auto;padding:40px 40px 20px}
+.features h2{font-size:20px;font-weight:600;margin-bottom:20px}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feature{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:22px}
+.feature-icon{font-size:24px;margin-bottom:10px}
+.feature h4{font-size:14px;font-weight:600;margin-bottom:5px}
+.feature p{font-size:13px;color:var(--gray);line-height:1.5}
+
+.personalization-zone{max-width:900px;margin:0 auto;padding:10px 40px}
+.pz-placeholder{border:2px dashed rgba(201,168,76,.2);border-radius:var(--radius);padding:20px;text-align:center;color:var(--gray);font-size:13px}
+
+.cta-banner{max-width:900px;margin:30px auto;padding:0 40px}
+.cta-box{background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(201,168,76,.04));border:1px solid rgba(201,168,76,.2);border-radius:var(--radius);padding:30px;text-align:center}
+.cta-box h3{font-size:18px;margin-bottom:8px}.cta-box p{color:var(--gray);font-size:14px;margin-bottom:16px}
+
+footer{max-width:900px;margin:40px auto 0;padding:20px 40px 30px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;font-size:12px;color:var(--gray)}
+</style>
+</head>
 <body>
 
-<nav class="nav">
-  <div class="nav-logo">c2bdemo</div>
+<nav>
+  <div class="logo">Circle<span>Two</span>Bank</div>
   <div class="nav-links">
     <a href="index.html">Dashboard</a>
     <a href="mortgage.html">Mortgage</a>
-    <a href="heloc.html" class="active">HELOC</a>
+    <a href="heloc.html" class="active" style="color:var(--white)">HELOC</a>
     <a href="personal.html">Personal Loan</a>
   </div>
-  <div class="nav-user">Sarah Chen</div>
+  <div class="nav-user">
+    <span>Sarah Chen</span>
+    <div class="avatar">SC</div>
+  </div>
 </nav>
 
-<div class="container">
-  <div class="product-hero">
-    <h1>Home Equity Line of Credit</h1>
-    <div class="product-rate">7.250%</div>
-    <div class="product-rate-label">Variable APR from</div>
-    <p class="product-desc">Tap into your home's equity for renovations, education, or debt consolidation. Draw what you need, when you need it.</p>
-  </div>
-
-  <div class="card">
-    <div class="card-label">Features</div>
-    <ul class="features">
-      <li>Borrow up to 85% of home equity</li>
-      <li>Interest-only payment option</li>
-      <li>No closing costs</li>
-      <li>10-year draw period</li>
-      <li>Convert to fixed rate anytime</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <div class="card-label">How it works</div>
-    <div style="margin-top:12px;font-size:14px;color:#555;line-height:1.7">
-      <p style="margin-bottom:12px">A HELOC works like a credit card secured by your home. You get approved for a credit limit based on your equity, then draw funds as needed during the draw period.</p>
-      <p>You only pay interest on what you borrow — not the full limit. After the draw period, you repay the balance over a fixed term.</p>
-    </div>
-  </div>
-
-  <button class="btn" onclick="applyNow('HELOC')" style="margin-top:8px">Check your equity</button>
-  <button class="btn btn-outline" onclick="downloadBrochure('HELOC')" style="margin-top:8px">Download guide</button>
+<div class="product-hero">
+  <div class="breadcrumb"><a href="index.html">Dashboard</a> &rsaquo; Home Equity Line of Credit</div>
+  <span class="badge badge-gold">Home Lending</span>
+  <h1>Home Equity Line of Credit</h1>
+  <p class="tagline">Access your home's equity with a flexible line of credit up to 85% LTV. Draw funds as needed for renovations, education, or debt consolidation.</p>
 </div>
 
-<script>
-function applyNow(product) {
-  const toast = document.createElement('div');
-  toast.className = 'toast';
-  toast.textContent = product + ' application started. Event tracked.';
-  document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 3000);
-}
+<div class="rate-card">
+  <div class="rate-box">
+    <div class="rate-main">
+      <div class="rate-num">7.250%</div>
+      <div class="rate-label">Current Variable APR</div>
+    </div>
+    <div class="rate-details">
+      <h3>Rate Details</h3>
+      <div class="detail-row"><span>Credit Line</span><span>Up to 85% LTV</span></div>
+      <div class="detail-row"><span>Draw Period</span><span>10 years</span></div>
+      <div class="detail-row"><span>Repayment Period</span><span>20 years</span></div>
+      <div class="detail-row"><span>Min. Draw</span><span>$10,000</span></div>
+      <div class="detail-row"><span>Annual Fee</span><span style="color:var(--green)">$0 (waived)</span></div>
+    </div>
+    <div class="rate-actions">
+      <button class="btn btn-accent" onclick="alert('HELOC application started!')">Apply Now</button>
+      <button class="btn btn-outline" onclick="alert('HELOC guide downloaded!')">Download Guide</button>
+    </div>
+  </div>
+</div>
 
-function downloadBrochure(product) {
-  const toast = document.createElement('div');
-  toast.className = 'toast';
-  toast.textContent = product + ' brochure downloaded. Event tracked.';
-  document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 3000);
-}
-</script>
+<div class="features">
+  <h2>HELOC Benefits</h2>
+  <div class="features-grid">
+    <div class="feature">
+      <div class="feature-icon">🔄</div>
+      <h4>Revolving Credit</h4>
+      <p>Draw, repay, and redraw as needed during your 10-year draw period. Only pay interest on what you use.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">📉</div>
+      <h4>Tax Advantages</h4>
+      <p>Interest may be tax-deductible when used for home improvements. Consult your tax advisor.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🏠</div>
+      <h4>No Closing Costs</h4>
+      <p>We cover standard closing costs for credit lines over $25,000 for existing customers.</p>
+    </div>
+  </div>
+</div>
+
+<div class="personalization-zone">
+  <div class="pz-placeholder" id="pdp-recommendations">📊 Personalization Zone — Recommendations will render here</div>
+</div>
+
+<div class="cta-banner">
+  <div class="cta-box">
+    <h3>Not sure how much equity you have?</h3>
+    <p>Use our free home value estimator to see what you might qualify for.</p>
+    <button class="btn btn-accent" onclick="alert('Opening home value estimator...')">Estimate My Home Value</button>
+  </div>
+</div>
+
+<footer>
+  <span>&copy; 2026 CircleTwoBank. Demo site for Salesforce Personalization.</span>
+  <span>Subject to credit approval. Property appraisal required.</span>
+</footer>
+
 </body>
 </html>

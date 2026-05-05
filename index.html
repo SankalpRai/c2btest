@@ -3,96 +3,174 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>c2bdemo — Dashboard</title>
-<link rel="stylesheet" href="style.css">
-<!-- No MCP beacon here — loan payoff is captured via Supabase, not MCP -->
+<title>CircleTwoBank — Welcome</title>
+<!-- PASTE YOUR BEACON SCRIPT BELOW -->
+<!-- <script type="text/javascript" src="//cdn.evgnet.com/beacon/YOUR_ACCOUNT/YOUR_DATASET/scripts/evergage.min.js"></script> -->
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0a1628;--navy-l:#132240;--gold:#c9a84c;--gold-l:#e4c76b;--white:#f4f1ec;--gray:#8a9bb5;--green:#34c77b;--red:#e85454;--card:#111e36;--radius:14px}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--navy);color:var(--white);min-height:100vh}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:1px solid rgba(255,255,255,.06)}
+.logo{font-size:20px;font-weight:700;letter-spacing:-.5px}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:28px;font-size:14px;color:var(--gray)}
+.nav-links a:hover{color:var(--white)}
+.nav-user{display:flex;align-items:center;gap:10px;font-size:14px}
+.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#e8a020);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:var(--navy)}
+
+/* HERO */
+.hero{padding:50px 40px 30px;max-width:1100px;margin:0 auto}
+.greeting{font-size:28px;font-weight:300}
+.greeting strong{font-weight:700;color:var(--gold)}
+.sub{color:var(--gray);margin-top:6px;font-size:15px}
+
+/* CARDS ROW */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1100px;margin:0 auto;padding:10px 40px 30px}
+.card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:26px;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);border-color:rgba(201,168,76,.3)}
+.card-label{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gray);margin-bottom:8px}
+.card-value{font-size:32px;font-weight:700}
+.card-value.green{color:var(--green)}
+.card-value.gold{color:var(--gold)}
+.card-change{font-size:13px;color:var(--gray);margin-top:6px}
+
+/* LOAN PAYOFF */
+.payoff-section{max-width:1100px;margin:0 auto;padding:10px 40px 20px}
+.payoff-card{background:linear-gradient(135deg,#0f2a1e 0%,#132240 100%);border:1px solid rgba(52,199,123,.15);border-radius:var(--radius);padding:30px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.payoff-info h3{font-size:18px;font-weight:600;margin-bottom:6px}
+.payoff-info p{color:var(--gray);font-size:14px;line-height:1.5}
+.payoff-info .amount{font-size:24px;font-weight:700;color:var(--green);margin:10px 0}
+.btn{display:inline-block;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all .2s}
+.btn-green{background:var(--green);color:#fff}
+.btn-green:hover{background:#2ab86c;transform:translateY(-1px)}
+
+/* OFFERS SECTION */
+.offers{max-width:1100px;margin:0 auto;padding:30px 40px}
+.offers h2{font-size:22px;font-weight:600;margin-bottom:6px}
+.offers .sub{margin-bottom:24px}
+.offers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.offer-card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:28px;transition:transform .2s,border-color .2s;display:flex;flex-direction:column}
+.offer-card:hover{transform:translateY(-3px);border-color:rgba(201,168,76,.25)}
+.offer-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.offer-icon.mortgage{background:rgba(78,140,255,.15);color:#4e8cff}
+.offer-icon.heloc{background:rgba(201,168,76,.15);color:var(--gold)}
+.offer-icon.personal{background:rgba(52,199,123,.15);color:var(--green)}
+.offer-card h3{font-size:17px;font-weight:600;margin-bottom:6px}
+.offer-card p{color:var(--gray);font-size:13.5px;line-height:1.5;flex:1}
+.offer-rate{font-size:26px;font-weight:700;margin:14px 0 4px}
+.offer-rate-label{font-size:12px;color:var(--gray)}
+.offer-actions{display:flex;gap:10px;margin-top:18px}
+.btn-gold{background:var(--gold);color:var(--navy);font-weight:700}
+.btn-gold:hover{background:var(--gold-l)}
+.btn-outline{background:transparent;border:1.5px solid rgba(255,255,255,.15);color:var(--white)}
+.btn-outline:hover{border-color:rgba(255,255,255,.35)}
+.btn-sm{padding:9px 18px;font-size:13px}
+
+/* FOOTER */
+footer{max-width:1100px;margin:40px auto 0;padding:20px 40px 30px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;font-size:12px;color:var(--gray)}
+</style>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-logo">c2bdemo</div>
+<nav>
+  <div class="logo">Circle<span>Two</span>Bank</div>
   <div class="nav-links">
-    <a href="index.html" class="active">Dashboard</a>
+    <a href="index.html" style="color:var(--white)">Dashboard</a>
     <a href="mortgage.html">Mortgage</a>
     <a href="heloc.html">HELOC</a>
     <a href="personal.html">Personal Loan</a>
   </div>
-  <div class="nav-user">Sarah Chen</div>
+  <div class="nav-user">
+    <span>Sarah Chen</span>
+    <div class="avatar">SC</div>
+  </div>
 </nav>
 
-<div class="container">
-  <h1 class="page-title">Good afternoon, Sarah</h1>
-  <p class="page-sub">Your auto loan is almost paid off.</p>
+<div class="hero">
+  <div class="greeting">Welcome back, <strong>Sarah</strong></div>
+  <p class="sub">Here's your account overview as of today</p>
+</div>
 
-  <div class="stats">
-    <div class="card">
-      <div class="card-label">Savings</div>
-      <div class="card-value">$67,340</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Credit Score</div>
-      <div class="card-value">762</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Outstanding</div>
-      <div class="card-value" id="outstandingVal">$547.32</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Tier</div>
-      <div class="card-value">Gold</div>
-    </div>
+<div class="cards">
+  <div class="card">
+    <div class="card-label">Checking Account</div>
+    <div class="card-value">$12,485.20</div>
+    <div class="card-change">+$3,200.00 this month</div>
   </div>
-
-  <div class="card" id="loanCard">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-      <span class="loan-badge">Auto Loan</span>
-      <span class="status status-active" id="loanStatus">Active</span>
-    </div>
-    <div class="loan-num">LN-2020-00142</div>
-    <div class="loan-balance" id="loanBalance">$547.32</div>
-    <div class="loan-original">of $28,500.00 original</div>
-    <div class="progress"><div class="progress-fill" id="progressBar" style="width:98.1%"></div></div>
-    <div class="progress-text" id="progressText">98.1% paid</div>
-
-    <div class="loan-grid">
-      <div><label>Rate</label><span>3.750%</span></div>
-      <div><label>Monthly</label><span>$521.14</span></div>
-      <div><label>Term</label><span>60 mo</span></div>
-      <div><label>Collateral</label><span>2019 Civic</span></div>
-    </div>
-
-    <button class="btn" id="payoffBtn" onclick="payoffLoan()">Pay off remaining $547.32</button>
+  <div class="card">
+    <div class="card-value gold" style="font-size:26px;margin-top:8px">782</div>
+    <div class="card-label" style="margin-top:8px">Credit Score</div>
+    <div class="card-change">Excellent — up 12 pts</div>
+  </div>
+  <div class="card">
+    <div class="card-label">Auto Loan Balance</div>
+    <div class="card-value green">$1,247.83</div>
+    <div class="card-change">Final payment due Jun 15</div>
   </div>
 </div>
 
-<script>
-let paidOff = false;
+<div class="payoff-section">
+  <div class="payoff-card">
+    <div class="payoff-info">
+      <h3>You're almost done with your Auto Loan!</h3>
+      <p>Only one payment left. Pay it off now and free up $420/month. Your excellent credit score qualifies you for our best rates on new products.</p>
+      <div class="amount">$1,247.83 remaining</div>
+    </div>
+    <button class="btn btn-green" onclick="alert('Auto loan payoff initiated!')">Pay Off Now</button>
+  </div>
+</div>
 
-function payoffLoan() {
-  if (paidOff) return;
-  const btn = document.getElementById('payoffBtn');
-  btn.disabled = true;
-  btn.textContent = 'Processing...';
+<div class="offers">
+  <h2>Recommended for You</h2>
+  <p class="sub">Based on your financial profile and recent activity</p>
+  <div class="offers-grid">
 
-  setTimeout(() => {
-    paidOff = true;
-    document.getElementById('loanBalance').textContent = '$0.00';
-    document.getElementById('outstandingVal').textContent = '$0.00';
-    document.getElementById('progressBar').style.width = '100%';
-    document.getElementById('progressText').textContent = '100% paid';
-    document.getElementById('loanStatus').textContent = 'Paid Off';
-    document.getElementById('loanStatus').className = 'status status-paid';
-    btn.textContent = 'Loan paid off ✓';
-    btn.style.background = '#555';
+    <div class="offer-card" data-product="Mortgage">
+      <div class="offer-icon mortgage">🏠</div>
+      <h3>Home Mortgage</h3>
+      <p>Fixed or adjustable rate mortgage up to $650K. Lock in today's rates with as little as 3% down.</p>
+      <div class="offer-rate">6.125%</div>
+      <div class="offer-rate-label">Starting APR</div>
+      <div class="offer-actions">
+        <a href="mortgage.html" class="btn btn-gold btn-sm">Learn More</a>
+        <a href="mortgage.html" class="btn btn-outline btn-sm">Get Pre-Qualified</a>
+      </div>
+    </div>
 
-    // Show toast
-    const toast = document.createElement('div');
-    toast.className = 'toast';
-    toast.textContent = 'Auto loan paid off. Event fired.';
-    document.body.appendChild(toast);
-    setTimeout(() => toast.remove(), 3000);
-  }, 1500);
-}
-</script>
+    <div class="offer-card" data-product="HELOC">
+      <div class="offer-icon heloc">🏡</div>
+      <h3>Home Equity Line</h3>
+      <p>Variable rate HELOC up to 85% LTV. Access your home's equity for renovations or debt consolidation.</p>
+      <div class="offer-rate">7.250%</div>
+      <div class="offer-rate-label">Current APR</div>
+      <div class="offer-actions">
+        <a href="heloc.html" class="btn btn-gold btn-sm">Learn More</a>
+        <a href="heloc.html" class="btn btn-outline btn-sm">Check Eligibility</a>
+      </div>
+    </div>
+
+    <div class="offer-card" data-product="Personal Loan">
+      <div class="offer-icon personal">💳</div>
+      <h3>Personal Loan</h3>
+      <p>Unsecured personal loan $5K to $50K. No collateral required. Funds deposited in 1–2 business days.</p>
+      <div class="offer-rate">8.990%</div>
+      <div class="offer-rate-label">Starting APR</div>
+      <div class="offer-actions">
+        <a href="personal.html" class="btn btn-gold btn-sm">Learn More</a>
+        <a href="personal.html" class="btn btn-outline btn-sm">See My Rate</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <span>&copy; 2026 CircleTwoBank. Demo site for Salesforce Personalization.</span>
+  <span>Member FDIC | Equal Housing Lender</span>
+</footer>
+
 </body>
 </html>

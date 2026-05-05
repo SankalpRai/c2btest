@@ -3,88 +3,143 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>c2bdemo — Home Mortgage</title>
-<link rel="stylesheet" href="style.css">
-<!-- MCP BEACON: Replace YOUR_ACCOUNT and YOUR_DATASET below -->
-<script type="text/javascript" src="//cdn.evgnet.com/beacon/nkroehlmerkle/c2bdemo/scripts/evergage.min.js"></script></head>
+<title>Home Mortgage — CircleTwoBank</title>
+<!-- PASTE YOUR BEACON SCRIPT BELOW -->
+<!-- <script type="text/javascript" src="//cdn.evgnet.com/beacon/YOUR_ACCOUNT/YOUR_DATASET/scripts/evergage.min.js"></script> -->
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0a1628;--navy-l:#132240;--gold:#c9a84c;--gold-l:#e4c76b;--white:#f4f1ec;--gray:#8a9bb5;--green:#34c77b;--card:#111e36;--accent:#4e8cff;--radius:14px}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--navy);color:var(--white);min-height:100vh}
+a{text-decoration:none;color:inherit}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:1px solid rgba(255,255,255,.06)}
+.logo{font-size:20px;font-weight:700;letter-spacing:-.5px}.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:28px;font-size:14px;color:var(--gray)}.nav-links a:hover{color:var(--white)}.nav-links a.active{color:var(--white)}
+.nav-user{display:flex;align-items:center;gap:10px;font-size:14px}
+.avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#e8a020);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:var(--navy)}
+
+.product-hero{max-width:900px;margin:0 auto;padding:60px 40px 40px}
+.breadcrumb{font-size:13px;color:var(--gray);margin-bottom:20px}.breadcrumb a:hover{color:var(--white)}
+.badge{display:inline-block;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:16px}
+.badge-blue{background:rgba(78,140,255,.15);color:var(--accent)}
+h1{font-size:38px;font-weight:700;line-height:1.2;margin-bottom:10px}
+.tagline{font-size:17px;color:var(--gray);line-height:1.5;max-width:600px}
+
+.rate-card{max-width:900px;margin:0 auto;padding:0 40px}
+.rate-box{background:var(--card);border:1px solid rgba(78,140,255,.2);border-radius:var(--radius);padding:32px;display:flex;align-items:center;gap:40px;flex-wrap:wrap}
+.rate-main{text-align:center;min-width:160px}
+.rate-num{font-size:52px;font-weight:800;color:var(--accent)}
+.rate-label{font-size:13px;color:var(--gray);margin-top:4px}
+.rate-details{flex:1;min-width:250px}
+.rate-details h3{font-size:16px;font-weight:600;margin-bottom:12px}
+.detail-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:14px}
+.detail-row span:first-child{color:var(--gray)}
+.detail-row span:last-child{font-weight:600}
+.rate-actions{display:flex;flex-direction:column;gap:10px;min-width:180px}
+.btn{display:inline-block;padding:13px 28px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all .2s;text-align:center}
+.btn-accent{background:var(--accent);color:#fff}.btn-accent:hover{background:#3d7be6;transform:translateY(-1px)}
+.btn-outline{background:transparent;border:1.5px solid rgba(255,255,255,.15);color:var(--white)}.btn-outline:hover{border-color:rgba(255,255,255,.35)}
+
+.features{max-width:900px;margin:0 auto;padding:40px 40px 20px}
+.features h2{font-size:20px;font-weight:600;margin-bottom:20px}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feature{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);padding:22px}
+.feature-icon{font-size:24px;margin-bottom:10px}
+.feature h4{font-size:14px;font-weight:600;margin-bottom:5px}
+.feature p{font-size:13px;color:var(--gray);line-height:1.5}
+
+.cta-banner{max-width:900px;margin:30px auto;padding:0 40px}
+.cta-box{background:linear-gradient(135deg,rgba(78,140,255,.1),rgba(201,168,76,.1));border:1px solid rgba(78,140,255,.2);border-radius:var(--radius);padding:30px;text-align:center}
+.cta-box h3{font-size:18px;margin-bottom:8px}.cta-box p{color:var(--gray);font-size:14px;margin-bottom:16px}
+
+/* Personalization content zone placeholder */
+.personalization-zone{max-width:900px;margin:0 auto;padding:10px 40px}
+.pz-placeholder{border:2px dashed rgba(201,168,76,.2);border-radius:var(--radius);padding:20px;text-align:center;color:var(--gray);font-size:13px}
+
+footer{max-width:900px;margin:40px auto 0;padding:20px 40px 30px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;font-size:12px;color:var(--gray)}
+</style>
+</head>
 <body>
 
-<nav class="nav">
-  <div class="nav-logo">c2bdemo</div>
+<nav>
+  <div class="logo">Circle<span>Two</span>Bank</div>
   <div class="nav-links">
     <a href="index.html">Dashboard</a>
-    <a href="mortgage.html" class="active">Mortgage</a>
+    <a href="mortgage.html" class="active" style="color:var(--white)">Mortgage</a>
     <a href="heloc.html">HELOC</a>
     <a href="personal.html">Personal Loan</a>
   </div>
-  <div class="nav-user">Sarah Chen</div>
+  <div class="nav-user">
+    <span>Sarah Chen</span>
+    <div class="avatar">SC</div>
+  </div>
 </nav>
 
-<div class="container">
-  <div class="product-hero">
-    <h1>Home Mortgage</h1>
-    <div class="product-rate">6.125%</div>
-    <div class="product-rate-label">APR as low as</div>
-    <p class="product-desc">Lock in competitive rates on your dream home. With your credit profile, you qualify for premium terms with as little as 10% down.</p>
-  </div>
-
-  <div class="card">
-    <div class="card-label">Features</div>
-    <ul class="features">
-      <li>Up to $650K with 10% down</li>
-      <li>Fixed or adjustable rate options</li>
-      <li>Pre-qualified in minutes</li>
-      <li>No origination fee for Gold members</li>
-      <li>Rate lock for 60 days</li>
-    </ul>
-  </div>
-
-  <div class="card">
-    <div class="card-label">Quick estimate</div>
-    <div style="margin-top:12px">
-      <label style="font-size:13px;color:#666">Home price</label>
-      <input type="range" min="100000" max="800000" value="400000" id="priceSlider" oninput="calcPayment()" style="width:100%;margin:8px 0">
-      <div style="display:flex;justify-content:space-between;font-size:13px;color:#999">
-        <span>$100K</span>
-        <span id="priceDisplay" style="color:#111;font-weight:600">$400,000</span>
-        <span>$800K</span>
-      </div>
-      <div style="margin-top:16px;font-size:14px;color:#555">
-        Estimated monthly: <strong id="monthlyEst">$2,432</strong>
-      </div>
-    </div>
-  </div>
-
-  <button class="btn" onclick="applyNow('Mortgage')" style="margin-top:8px">Start pre-qualification</button>
-  <button class="btn btn-outline" onclick="downloadBrochure('Mortgage')" style="margin-top:8px">Download brochure</button>
+<div class="product-hero">
+  <div class="breadcrumb"><a href="index.html">Dashboard</a> &rsaquo; Home Mortgage</div>
+  <span class="badge badge-blue">Home Lending</span>
+  <h1>Home Mortgage</h1>
+  <p class="tagline">Fixed or adjustable rate mortgage up to $650,000. With your excellent credit score of 782, you qualify for our very best rates.</p>
 </div>
 
-<script>
-function calcPayment() {
-  const price = document.getElementById('priceSlider').value;
-  document.getElementById('priceDisplay').textContent = '$' + Number(price).toLocaleString();
-  const loan = price * 0.9;
-  const r = 0.06125 / 12;
-  const n = 360;
-  const monthly = loan * (r * Math.pow(1+r,n)) / (Math.pow(1+r,n)-1);
-  document.getElementById('monthlyEst').textContent = '$' + Math.round(monthly).toLocaleString();
-}
+<div class="rate-card">
+  <div class="rate-box">
+    <div class="rate-main">
+      <div class="rate-num">6.125%</div>
+      <div class="rate-label">Starting APR</div>
+    </div>
+    <div class="rate-details">
+      <h3>Rate Details</h3>
+      <div class="detail-row"><span>Loan Amount</span><span>Up to $650,000</span></div>
+      <div class="detail-row"><span>Term Options</span><span>15 or 30 years</span></div>
+      <div class="detail-row"><span>Down Payment</span><span>As low as 3%</span></div>
+      <div class="detail-row"><span>Monthly (est.)</span><span>$2,960/mo*</span></div>
+      <div class="detail-row"><span>Your Rate Discount</span><span style="color:var(--green)">−0.25% (autopay)</span></div>
+    </div>
+    <div class="rate-actions">
+      <button class="btn btn-accent" onclick="alert('Application started!')">Apply Now</button>
+      <button class="btn btn-outline" onclick="alert('Brochure downloaded!')">Download Brochure</button>
+    </div>
+  </div>
+</div>
 
-function applyNow(product) {
-  const toast = document.createElement('div');
-  toast.className = 'toast';
-  toast.textContent = product + ' application started. Event tracked.';
-  document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 3000);
-}
+<div class="features">
+  <h2>Why CircleTwoBank Mortgage?</h2>
+  <div class="features-grid">
+    <div class="feature">
+      <div class="feature-icon">⚡</div>
+      <h4>Fast Pre-Approval</h4>
+      <p>Get pre-approved in as little as 24 hours with our streamlined digital process.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">🔒</div>
+      <h4>Rate Lock Guarantee</h4>
+      <p>Lock your rate for up to 90 days with no fee while you find your perfect home.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">💰</div>
+      <h4>Low Closing Costs</h4>
+      <p>Save up to $2,500 with our closing cost credit for existing customers.</p>
+    </div>
+  </div>
+</div>
 
-function downloadBrochure(product) {
-  const toast = document.createElement('div');
-  toast.className = 'toast';
-  toast.textContent = product + ' brochure downloaded. Event tracked.';
-  document.body.appendChild(toast);
-  setTimeout(() => toast.remove(), 3000);
-}
-</script>
+<div class="personalization-zone">
+  <div class="pz-placeholder" id="pdp-recommendations">📊 Personalization Zone — Product recommendations will render here</div>
+</div>
+
+<div class="cta-banner">
+  <div class="cta-box">
+    <h3>Ready to take the next step?</h3>
+    <p>Talk to a mortgage specialist who can walk you through your options.</p>
+    <button class="btn btn-accent" onclick="alert('Scheduling callback...')">Schedule a Call</button>
+  </div>
+</div>
+
+<footer>
+  <span>&copy; 2026 CircleTwoBank. Demo site for Salesforce Personalization.</span>
+  <span>*Estimated payment based on $500K / 30yr fixed. Subject to approval.</span>
+</footer>
+
 </body>
 </html>
